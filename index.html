@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Graduación Diseño de Modas</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+body{
+    margin:0;
+    overflow:hidden;
+    font-family:'Montserrat',sans-serif;
+    background:radial-gradient(circle at top,#1a001f,#000);
+    color:white;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+}
+
+/* TARJETA */
+.card{
+    background:rgba(255,255,255,0.05);
+    backdrop-filter:blur(10px);
+    border:1px solid rgba(255,255,255,0.2);
+    padding:60px;
+    border-radius:30px;
+    text-align:center;
+    max-width:700px;
+    z-index:5;
+    animation:fadeIn 2s ease;
+}
+
+@keyframes fadeIn{
+    from{opacity:0;transform:scale(.8);}
+    to{opacity:1;transform:scale(1);}
+}
+
+h1{
+    font-family:'Playfair Display',serif;
+    font-size:45px;
+    color:#f8d210;
+    text-shadow:0 0 20px gold;
+}
+
+h2{
+    font-size:32px;
+    margin-bottom:20px;
+    color:#fff;
+}
+
+p{
+    font-size:18px;
+    line-height:1.6;
+}
+
+.verse{
+    margin-top:25px;
+    font-style:italic;
+    color:#f8d210;
+}
+
+.footer{
+    margin-top:30px;
+    font-size:20px;
+    font-weight:600;
+}
+
+/* CONFETI */
+.confetti{
+    position:absolute;
+    width:8px;
+    height:8px;
+    top:-10px;
+    animation:fall linear forwards;
+}
+
+@keyframes fall{
+    to{
+        transform:translateY(110vh) rotate(720deg);
+        opacity:0;
+    }
+}
+
+/* FUEGOS ARTIFICIALES */
+.firework{
+    position:absolute;
+    width:5px;
+    height:5px;
+    border-radius:50%;
+    box-shadow:0 0 15px white;
+    animation:explode 1s ease-out forwards;
+}
+
+@keyframes explode{
+    from{transform:scale(1);opacity:1;}
+    to{transform:scale(20);opacity:0;}
+}
+
+/* ICONOS MODA */
+.icons{
+    margin-top:20px;
+    font-size:30px;
+    animation:float 3s ease-in-out infinite;
+}
+
+@keyframes float{
+    0%,100%{transform:translateY(0);}
+    50%{transform:translateY(-10px);}
+}
+</style>
+</head>
+<body>
+
+<div class="card">
+    <h1>¡FELICIDADES!</h1>
+    <h2>NICOL ARÉVALO</h2>
+
+    <p>
+        ESTOY ORGULLOSO DE TU LOGRO
+DIOS TE AYUDE EN TODAS TUS SIGUIENTES METAS    </p>
+
+    <p class="verse">
+        “Encomienda a Jehová tus obras, y tus pensamientos serán afirmados.” – Proverbios 16:3
+    </p>
+
+    <div class="icons">👗 ✂️ 🧵 💎 👠</div>
+
+    <div class="footer">
+        🎓✨ ¡DIOS TE BENDIGA! ✨🎉
+    </div>
+</div>
+
+<script>
+// CONFETI
+function createConfetti(){
+    const colors=['#f8d210','#ff4d6d','#9d4edd','#00f5d4','#ffffff'];
+    const conf=document.createElement('div');
+    conf.classList.add('confetti');
+    conf.style.left=Math.random()*window.innerWidth+'px';
+    conf.style.backgroundColor=colors[Math.floor(Math.random()*colors.length)];
+    conf.style.animationDuration=(Math.random()*3+2)+'s';
+    document.body.appendChild(conf);
+    setTimeout(()=>conf.remove(),5000);
+}
+setInterval(createConfetti,120);
+
+// FUEGOS ARTIFICIALES
+function createFirework(){
+    const fw=document.createElement('div');
+    fw.classList.add('firework');
+    fw.style.left=Math.random()*window.innerWidth+'px';
+    fw.style.top=Math.random()*window.innerHeight+'px';
+    fw.style.backgroundColor='hsl('+Math.random()*360+',100%,60%)';
+    document.body.appendChild(fw);
+    setTimeout(()=>fw.remove(),1000);
+}
+setInterval(createFirework,1500);
+</script>
+
+</body>
+</html>
